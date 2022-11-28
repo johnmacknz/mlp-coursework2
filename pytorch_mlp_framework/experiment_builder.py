@@ -154,8 +154,14 @@ class ExperimentBuilder(nn.Module):
         Complete the code in the block below to collect absolute mean of the gradients for each layer in all_grads with the             layer names in layers.
         """
         ########################################
-        
-        
+        for name, value in named_parameters:
+            if "bias" not in name:
+                name = name.replace("model.","")
+                name = name.replace("layer_dict.","")
+                name = name.replace(".weight","")
+                name = name.replace(".","_")
+                layer.append(name)
+                all_grads.append(value.grad.cpu().abs().mean())   
         ########################################
             
         
