@@ -160,7 +160,7 @@ class ExperimentBuilder(nn.Module):
                 name = name.replace("layer_dict.","")
                 name = name.replace(".weight","")
                 name = name.replace(".","_")
-                layer.append(name)
+                layers.append(name)
                 all_grads.append(value.grad.cpu().abs().mean())   
         ########################################
             
