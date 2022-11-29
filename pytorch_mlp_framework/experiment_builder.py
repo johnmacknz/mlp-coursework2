@@ -158,7 +158,7 @@ class ExperimentBuilder(nn.Module):
         to_remov = {"model.":"","layer_dict.":"",".weight":"",".":"_"}
         for name, param in named_parameters:
             if "bias" not in name:
-                for string in to_remov.keys()
+                for string in to_remov.keys():
                     name = name.replace(string, to_remov[string])
                 layers.append(name)
                 gradient = param.grad.cpu()
