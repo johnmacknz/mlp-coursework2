@@ -151,17 +151,18 @@ class ExperimentBuilder(nn.Module):
         layers = []
         
         """
-        Complete the code in the block below to collect absolute mean of the gradients for each layer in all_grads with the             layer names in layers.
+        Complete the code in the block below to collect absolute mean of the gradients for each layer in all_grads with the
+        layer names in layers.
         """
         ########################################
-        for name, value in named_parameters:
+        to_remov = {"model.":"","layer_dict.":"",".weight":"",".":"_"}
+        for name, param in named_parameters:
             if "bias" not in name:
-                name = name.replace("model.","")
-                name = name.replace("layer_dict.","")
-                name = name.replace(".weight","")
-                name = name.replace(".","_")
+                for string in to_remov.keys()
+                    name = name.replace(string, to_remov[string])
                 layers.append(name)
-                all_grads.append(value.grad.cpu().abs().mean())   
+                gradient = param.grad.cpu()
+                all_grads.append(gradient.abs().mean())   
         ########################################
             
         
