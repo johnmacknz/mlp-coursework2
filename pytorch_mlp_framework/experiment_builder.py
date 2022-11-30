@@ -177,6 +177,8 @@ class ExperimentBuilder(nn.Module):
     
     def run_train_iter(self, x, y):
         
+        print(self.device)
+        
         self.train()  # sets model to training mode (in case batch normalization or other methods have different procedures for training and evaluation)
         x, y = x.float().to(device=self.device), y.long().to(
             device=self.device)  # send data to device as torch tensors
