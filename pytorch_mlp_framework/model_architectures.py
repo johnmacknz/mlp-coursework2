@@ -364,7 +364,7 @@ class ConvolutionalProcessingBlockBN(nn.Module):
         out = self.layer_dict['conv_0'].forward(out)
         
         conv_0_bn = nn.BatchNorm2d(num_features=out.shape[1]) # batch normalisation
-        out = conv_0_bn.forward(out).device('cuda:0')
+        out = conv_0_bn.forward(out)
         
         out = F.leaky_relu(out)
 
@@ -375,7 +375,7 @@ class ConvolutionalProcessingBlockBN(nn.Module):
         out = self.layer_dict['conv_1'].forward(out)
         
         conv_1_bn =nn.BatchNorm2d(num_features=out.shape[1]) # batch normalisation
-        out = conv_1_bn.forward(out).device('cuda:0')
+        out = conv_1_bn.forward(out)
         
         out = F.leaky_relu(out)
 
@@ -387,14 +387,14 @@ class ConvolutionalProcessingBlockBN(nn.Module):
         out = self.layer_dict['conv_0'].forward(out)
         
         conv_0_bn =nn.BatchNorm2d(num_features=out.shape[1]) # batch normalisation
-        out = conv_0_bn.forward(out).device('cuda:0')
+        out = conv_0_bn.forward(out)
         
         out = F.leaky_relu(out)
 
         out = self.layer_dict['conv_1'].forward(out)
         
         conv_1_bn =nn.BatchNorm2d(num_features=out.shape[1]) # batch normalisation
-        out = conv_1_bn.forward(out).device('cuda:0')
+        out = conv_1_bn.forward(out)
         
         out = F.leaky_relu(out)
 
@@ -425,7 +425,7 @@ class ConvolutionalDimensionalityReductionBlockBN(nn.Module):
         out = self.layer_dict['conv_0'].forward(out)
         
         conv_0_bn = nn.BatchNorm2d(num_features=out.shape[1]) # batch normalisation
-        out = conv_0_bn.forward(out).device('cuda:0')
+        out = conv_0_bn.forward(out)
         
         out = F.leaky_relu(out)
 
@@ -438,7 +438,7 @@ class ConvolutionalDimensionalityReductionBlockBN(nn.Module):
         out = self.layer_dict['conv_1'].forward(out)
         
         conv_1_bn = nn.BatchNorm2d(num_features=out.shape[1]) # batch normalisation
-        out = conv_1_bn.forward(out).device('cuda:0')
+        out = conv_1_bn.forward(out)
         
         out = F.leaky_relu(out)
 
@@ -450,7 +450,7 @@ class ConvolutionalDimensionalityReductionBlockBN(nn.Module):
         out = self.layer_dict['conv_0'].forward(out)
         
         conv_0_bn = nn.BatchNorm2d(num_features=out.shape[1]) # batch normalisation
-        out = conv_0_bn.forward(out).device('cuda:0')
+        out = conv_0_bn.forward(out)
         
         out = F.leaky_relu(out)
 
@@ -459,7 +459,7 @@ class ConvolutionalDimensionalityReductionBlockBN(nn.Module):
         out = self.layer_dict['conv_1'].forward(out)
         
         conv_1_bn = nn.BatchNorm2d(num_features=out.shape[1]) # batch normalisation
-        out = conv_1_bn.forward(out).device('cuda:0')
+        out = conv_1_bn.forward(out)
         
         out = F.leaky_relu(out)
 
