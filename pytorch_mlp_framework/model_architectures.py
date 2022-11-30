@@ -473,8 +473,7 @@ class ConvolutionalProcessingBlockBNRC(nn.Module):
 
         out = self.layer_dict['conv_0'].forward(out)
         
-        conv_0_bn = nn.BatchNorm2d(num_features=out.shape[1]) # batch normalisation
-        out = conv_0_bn.forward(out)
+        self.layer_dict['bn_0'] = nn.BatchNorm2d(num_features=out.shape[1]) # batch normalisation
         
         out = F.leaky_relu(out)
 
@@ -484,8 +483,8 @@ class ConvolutionalProcessingBlockBNRC(nn.Module):
 
         out = self.layer_dict['conv_1'].forward(out)
         
-        conv_1_bn = nn.BatchNorm2d(num_features=out.shape[1]) # batch normalisation
-        out = conv_1_bn.forward(out)
+        self.layer_dict['bn_1'] = nn.BatchNorm2d(num_features=out.shape[1]) # batch normalisation
+        out = self.layer_dict['bn_1'].forward(out)
         
         out = torch.add(out, resi_connect) # residual connection
         
@@ -498,15 +497,11 @@ class ConvolutionalProcessingBlockBNRC(nn.Module):
 
         out = self.layer_dict['conv_0'].forward(out)
         
-        conv_0_bn =nn.BatchNorm2d(num_features=out.shape[1]) # batch normalisation
-        out = conv_0_bn.forward(out)
-        
-        out = F.leaky_relu(out)
+        out = F.leaky_relu(self.layer_dict['bn_0'].forward(out))
 
         out = self.layer_dict['conv_1'].forward(out)
         
-        conv_1_bn =nn.BatchNorm2d(num_features=out.shape[1]) # batch normalisation
-        out = conv_1_bn.forward(out)
+        out = self.layer_dict['bn_1'].forward(out)
         
         out = torch.add(out, resi_connect) # residual conncection
         
