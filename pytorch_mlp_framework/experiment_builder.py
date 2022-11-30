@@ -162,7 +162,7 @@ class ExperimentBuilder(nn.Module):
                     name = name.replace(string, to_remov[string])
                 layers.append(name)
                 gradient = param.grad.cpu()
-                all_grads.append(gradient.mean().abs())   
+                all_grads.append(gradient.abs().mean())   
         ########################################
             
         
