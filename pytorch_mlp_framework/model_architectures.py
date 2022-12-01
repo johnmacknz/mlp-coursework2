@@ -488,7 +488,7 @@ class ConvolutionalProcessingBlockBNRC(nn.Module):
         self.layer_dict['bn_1'] = nn.BatchNorm2d(num_features=out.shape[1]) # batch normalisation
         out = self.layer_dict['bn_1'].forward(out)
         
-        out = torch.add(out, resi_connect) # adding residual connection
+        out = torch.add(out, rescon) # adding residual connection
         
         out = F.leaky_relu(out)
 
